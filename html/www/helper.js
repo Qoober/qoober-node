@@ -60,6 +60,88 @@ function formatTime(unix_timestamp){
 	return cDay + '.' + cMonth + '.' + cYear + ' ' + cHour + ':' + cMin + ':' + cSec;
 }
 
+function formatTimeServerAge(time, serverTime){
+	let diff = (serverTime - time) / 1000;
+	
+	let diff_years = Math.floor(diff / 31536000);
+	diff = diff % 31536000;
+
+	let diff_months = Math.floor(diff / 2592000);
+	diff = diff % 2592000;
+
+	let diff_days = Math.floor(diff / 86400);
+	diff = diff % 86400;
+
+	let diff_hours = Math.floor(diff / 3600);
+	diff = diff % 3600;
+
+	let diff_mins = Math.floor(diff / 60);
+	let diff_secs = Math.floor(diff % 60);
+	
+	if(diff_years > 0){
+		return diff_years + ' years ago';
+	}
+	
+	if(diff_months > 0){
+		return diff_months + ' months ago';
+	}
+
+	if(diff_days > 0){
+		return diff_days + ' days ago';
+	}
+
+	if(diff_hours > 0){
+		return diff_hours + ' hours ago';
+	}
+
+	if(diff_mins > 0){
+		return diff_mins + ' mins ago';
+	}
+
+	return diff_secs + ' secs ago';
+}
+
+function formatTimeForging(time){
+	let diff = time;
+
+	let diff_years = Math.floor(diff / 31536000);
+	diff = diff % 31536000;
+
+	let diff_months = Math.floor(diff / 2592000);
+	diff = diff % 2592000;
+
+	let diff_days = Math.floor(diff / 86400);
+	diff = diff % 86400;
+
+	let diff_hours = Math.floor(diff / 3600);
+	diff = diff % 3600;
+
+	let diff_mins = Math.floor(diff / 60);
+	let diff_secs = Math.floor(diff % 60);
+	
+	if(diff_years > 0){
+		return diff_years + ' years';
+	}
+	
+	if(diff_months > 0){
+		return diff_months + ' months';
+	}
+
+	if(diff_days > 0){
+		return diff_days + ' days';
+	}
+
+	if(diff_hours > 0){
+		return diff_hours + ' hours';
+	}
+
+	if(diff_mins > 0){
+		return diff_mins + ' mins';
+	}
+
+	return diff_secs + ' secs';
+}
+
 
 function tsToTime(unix_timestamp){
 	var date = new Date(unix_timestamp);
